@@ -1,0 +1,23 @@
+<div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Nueva Cuenta</h1>
+
+  <%= form_with model: @cuenta, url: cuentas_path, method: :post, class: "space-y-6" do |f| %>
+
+    <%= render 'shared/error_messages', object: @cuenta %>
+
+    <div class="mb-6">
+      <%= f.label :account_number, "Número de Cuenta", class: "block text-gray-700 font-semibold mb-2" %>
+      <%= f.text_field :account_number, maxlength: 16, class: "w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent", placeholder: "Introduce el número de cuenta" %>
+    </div>
+
+    <div class="mb-6">
+      <%= f.label :cliente_id, "Asignar a Cliente", class: "block text-gray-700 font-semibold mb-2" %>
+      <%= f.collection_select :cliente_id, @clientes, :id, :full_name, {}, class: "w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <div class="flex justify-between">
+      <%= link_to "Regresar", root_path, class: "bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400 transition-all shadow-md" %>
+      <%= f.submit "Crear Cuenta", class: "bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-all shadow-md focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" %>
+    </div>
+  <% end %>
+</div>

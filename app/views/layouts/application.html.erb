@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Ks Challenge" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-gray-100 font-sans antialiased text-gray-900">
+    <main class="max-w-7xl mx-auto mt-10 px-4 sm:px-6 lg:px-8 flex flex-col">
+      <section class="flex-1">
+        <% if flash[:notice] %>
+          <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+            <strong class="font-bold">¡Éxito!</strong>
+            <span class="block sm:inline"><%= flash[:notice] %></span>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-3xl font-bold">Clientes</h1>
+
+  <div class="flex space-x-4">
+    <%= link_to 'Crear Cliente', new_cliente_path, class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-all shadow-md" %>
+    <%= link_to 'Crear Cuenta', new_cuenta_path, class: "bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-all shadow-md" %>
+  </div>
+</div>
+<table class="min-w-full bg-white border border-gray-200 shadow-lg rounded-lg">
+  <thead>
+    <tr class="bg-gray-100 border-b">
+      <th class="py-2 px-4 text-left font-semibold">Nombre</th>
+      <th class="py-2 px-4 text-left font-semibold">Apellido Paterno</th>
+      <th class="py-2 px-4 text-left font-semibold">Apellido Materno</th>
+      <th class="py-2 px-4 text-left font-semibold">Edad</th>
+      <th class="py-2 px-4 text-left font-semibold">Sexo</th>
+      <th class="py-2 px-4 text-left font-semibold">Email</th>
+      <th class="py-2 px-4 text-left font-semibold">CURP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clientes.each_with_index do |cliente, index| %>
+      <tr class="<%= index.even? ? 'bg-white' : 'bg-gray-50' %> hover:bg-gray-100 border-b">
+        <td class="py-2 px-4"><%= cliente.first_name %></td>
+        <td class="py-2 px-4"><%= cliente.last_name_paternal %></td>
+        <td class="py-2 px-4"><%= cliente.last_name_maternal %></td>
+        <td class="py-2 px-4"><%= cliente.age %></td>
+        <td class="py-2 px-4"><%= cliente.gender %></td>
+        <td class="py-2 px-4"><%= cliente.email %></td>
+        <td class="py-2 px-4"><%= cliente.curp %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
